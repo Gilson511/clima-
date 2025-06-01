@@ -36,21 +36,25 @@ document.querySelector('.busca').addEventListener('submit',async(event)=>{
 function showInfo(json){
     showMSG('');
 
-    
+    document.querySelector('.resultado').style.display = 'block';
+
     document.querySelector('.titulo').innerHTML = `${json.name},${json.country}`;
     document.querySelector('.tempInfo').innerHTML = `${json.temp} <sup>Cº</sup>`;
     document.querySelector('.ventoInfo').innerHTML = `${json.windSpeed} <span>km/h</span>`;
 
     document.querySelector('.temp img').setAttribute('src',`http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`); // troca atributo padrao pelo json. 
     document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle-90}deg)`;
-    document.querySelector('.resultado').style.display = 'block';
 }
+
+
+function showMSG(msg = 'carregando...'){
+    document.querySelector('.aviso').innerHTML = msg;
+}
+
 
 function clearInfo(){
     showMSG('');
     document.querySelector('.resultado').style.display = 'none';
 }
-function showMSG(msg = 'carregando...'){
-     document.querySelector('.aviso').innerHTML = msg;
-}
+
 
